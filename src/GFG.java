@@ -10,19 +10,39 @@ class GFG {
         String keyword=sc.nextLine().toUpperCase();
         int t= text.length();
         int k= keyword.length();
-        String[][] arr = new String[k][(t%k)+1];
+        char[][] arr = new char[k][(t/k)+1];
 
-        int[] key = new int[k];
+        ArrayList key = new ArrayList(k);
         for(int i=0; i<k; i++)
-            key[i] = (int)keyword.charAt(i); 
+            key.add( (int)keyword.charAt(i) ); 
         
         // for(int i=0; i<k; i++)
         //     System.out.print(key[i]+" ");
         
-        // for(int i=0; i<key.length(); i++)
-        // {
-            
-        // }
+        int count=0;
+        for(int m=0; m<k; m++)
+        {
+        	for(int d=0; d<(t/k)+1; d++)
+        	{
+        		if(count<t)
+        		{
+        			arr[m][d] = (text.charAt(count)==' ') ? '_' :  text.charAt(count);
+        			count++;
+//        			System.out.print(arr[m][d]+" ");
+        		}
+        		else
+        		{
+        			arr[m][d] = '_';
+        			count++;
+//        			System.out.print(arr[m][d]+" ");
+        		}
+        	}
+//        	System.out.println();
+        }
+        
+        
+        
+        
         
 	}
 }
