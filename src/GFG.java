@@ -12,9 +12,9 @@ class GFG {
         int k= keyword.length();
         char[][] arr = new char[k][(t/k)+1];
 
-        ArrayList key = new ArrayList(k);
+        int[] key = new int[k];
         for(int i=0; i<k; i++)
-            key.add( (int)keyword.charAt(i) ); 
+            key[i] = (int)keyword.charAt(i) ; 
         
         // for(int i=0; i<k; i++)
         //     System.out.print(key[i]+" ");
@@ -28,20 +28,38 @@ class GFG {
         		{
         			arr[m][d] = (text.charAt(count)==' ') ? '_' :  text.charAt(count);
         			count++;
-//        			System.out.print(arr[m][d]+" ");
+        			System.out.print(arr[m][d]+" ");
         		}
         		else
         		{
         			arr[m][d] = '_';
         			count++;
-//        			System.out.print(arr[m][d]+" ");
+        			System.out.print(arr[m][d]+" ");
         		}
         	}
-//        	System.out.println();
+        	System.out.println();
+        }
+        
+        int[] rank= new int[k];
+        int ran=0;
+        for(int i=0; i<k; i++)
+        {
+        	ran=0;
+        	for(int j=0; j<k; j++)
+        	{
+        		rank[i] = key[i]<key[j] ? rank[i] : ran++;
+        	}
+//        	System.out.print(rank[i]+" ");
         }
         
         
-        
+        for(int m=0; m<k; m++)
+        {
+        	for(int d=0; d<(t/k)+1; d++)
+        	{
+        		System.out.print(arr[d][rank[m]]);
+        	}
+        }
         
         
 	}
